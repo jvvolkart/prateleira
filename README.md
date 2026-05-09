@@ -1,6 +1,6 @@
 # Prateleira
 
-Aplicacao full-stack para cadastro/autenticacao por empresa (tenant), gestao de produtos e chat assistido por IA.
+Aplicação full-stack para cadastro/autenticação por empresa (tenant), gestão de produtos e chat assistido por IA.
 
 ## Setup local (primeira vez)
 
@@ -29,17 +29,26 @@ Frontend (`frontend/.env`):
 VITE_API_URL=http://localhost:4000
 ```
 
-> Se `OPENAI_API_KEY` estiver vazio, o chat pode nao funcionar, mas autenticacao e produtos sobem normalmente.
+> Se `OPENAI_API_KEY` estiver vazio, o chat pode não funcionar, mas autenticação e produtos sobem normalmente.
 
-### 2) Subir o projeto (recomendado)
+### 2) Subir o projeto
 
 ```bash
+# Backend + MongoDB
 docker compose up --build
 
-# em outro terminal
+# Frontend (em outro terminal)
 cd frontend
 npm install
 npm run dev
+```
+
+Para popular dados de exemplo após subir o backend:
+
+```bash
+# em outro terminal
+cd backend
+npm run seed
 ```
 
 - Frontend: `http://localhost:5173`
@@ -49,7 +58,7 @@ npm run dev
 
 ### 3) Alternativa: rodar backend sem compose
 
-Suba so o MongoDB via Docker:
+Suba só o MongoDB via Docker:
 
 ```bash
 docker compose up -d mongo
@@ -63,6 +72,15 @@ npm install
 npm run dev
 ```
 
+Depois, para popular dados de exemplo:
+
+```bash
+# em outro terminal
+cd backend
+npm run seed
+```
+Após rodar o comando seed, no console é printado usuários e senha para fazer o login
+
 E frontend local (outro terminal):
 ```bash
 cd frontend
@@ -71,50 +89,50 @@ npm run dev
 ```
 
 
-## Decisoes arquiteturais
+## Decisões arquiteturais
 
 ### Estrutura geral
 
-- **Monorepo simples (`frontend/` + `backend/`)**: reduz friccao de onboarding e facilita evoluir API e UI em conjunto sem a dificuldade de navegar em multiplos repos.
-- **Separacao por camada no backend**: `routes/`, `middleware/`, `models/`, `chat/`, `lib/` deixa responsabilidades previsiveis e diminui acoplamento entre transporte HTTP e regra.
-- **SPA React + Router**: fluxo de autenticacao e areas protegidas ficam declarativos, com roteamento centralizado em `App.tsx`.
+- **Monorepo simples (`frontend/` + `backend/`)**: reduz fricção de onboarding e facilita evoluir API e UI em conjunto sem a dificuldade de navegar em múltiplos repositórios.
+- **Separação por camada no backend**: `routes/`, `middleware/`, `models/`, `chat/`, `lib/` deixa responsabilidades previsíveis e diminui acoplamento entre transporte HTTP e regra.
+- **SPA React + Router**: fluxo de autenticação e áreas protegidas ficam declarativos, com roteamento centralizado em `App.tsx`.
 
 ### Patterns adotados
 
-- **Auth centralizado em `AuthContext`**: token, usuario e sessao ficam em um estado unico consumido pela aplicacao inteira sem prop drilling.
+- **Auth centralizado em `AuthContext`**: token, usuário e sessão ficam em um estado único consumido pela aplicação inteira sem prop drilling.
 - **Tenant no token/JWT + middleware**: escopo por empresa e aplicado no backend antes das rotas protegidas; evita vazar dados cross-tenant por descuido na UI.
-- **Mongoose para modelagem rapida**: com Mongoose a gente ganha schema, validacao e model methods de forma organizada; sem ele, acaba escrevendo mais regra manual e ficando mais facil deixar inconsistencias passarem.
-- **SSE no chat**: entrega incremental da resposta ao usuario, melhorando a performance percebida sem precisar infraestrutura de WebSocket.
+- **Mongoose para modelagem rápida**: com Mongoose a gente ganha schema, validação e model methods de forma organizada; sem ele, acaba escrevendo mais regra manual e ficando mais fácil deixar inconsistências passarem.
+- **SSE no chat**: entrega incremental da resposta ao usuário, melhorando a performance percebida sem precisar infraestrutura de WebSocket.
 
 ---
 
-## O que eu faria diferente em producao
+## O que eu faria diferente em produção
 
 ### Escala
 
-- Colocaria **cache** (Redis) para sessoes, rate-limits e respostas de leitura quente.
-- Tiraria o chat da request direta da API e processaria em background (fila + worker), pra API principal continuar rapida.
+- Colocaria **cache** (Redis) para sessões, rate-limits e respostas de endpoints acessados frequentemente.
+- Tiraria o chat da request direta da API e processaria em background (fila + worker), pra API principal continuar rápida.
 - Faria uploads em **CDN** (S3) em vez de filesystem local.
 
-### Seguranca
+### Segurança
 
 - Adicionaria o **helmet**
-- Limitacao e sanitização de payload
+- Limitação e sanitização de payload
 - CORS estrito por ambiente
 - Rate limit por IP.
-- Validacao de entrada com schema (`yup`) em todas as rotas.
+- Validação de entrada com schema (`yup`) em todas as rotas.
 
-### Monitoramento e operacao
+### Monitoramento e operação
 
-- **Logs estruturados** Utilizaria o Datadog para monitorar os logs da aplicação.
+- **Logs estruturados:** Utilizaria o Datadog para monitorar os logs e infra da aplicação.
 - Pipeline CI com gates de:
-  - testes,
-  - lint/typecheck,
-  - scan de seguranca (SAST + dependencias).
+  - Testes,
+  - Lint/typecheck,
+  - Scan de segurança (SAST + dependências).
 
 ---
 
-## Comandos uteis
+## Comandos úteis
 
 Backend:
 
