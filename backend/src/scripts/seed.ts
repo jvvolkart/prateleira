@@ -193,7 +193,7 @@ async function main(): Promise<void> {
       description:
         "Protocolo clínico com foco em energia sustentada, correção nutricional e redução de cansaço crônico para rotina de alta demanda.",
       price: 690,
-      imageUrl: defaultImage,
+      imageUrl: 'https://healthcare.utah.edu/sites/g/files/zrelqx136/files/styles/billboard_desktop/public/media/images/2024/GettyImages-866130634-exercise%20breathing.jpg?h=499ddffa&itok=I8SJJOPE',
     },
     {
       company_id: clinicaVolkart._id,
@@ -211,7 +211,7 @@ async function main(): Promise<void> {
       description:
         "Acompanhamento médico e nutricional para estabilizar glicemia, reduzir picos de fome e acelerar recomposição corporal.",
       price: 980,
-      imageUrl: defaultImage,
+      imageUrl: 'https://thumbs.dreamstime.com/b/insulina-37133481.jpg',
     },
     {
       company_id: clinicaVolkart._id,
@@ -220,7 +220,7 @@ async function main(): Promise<void> {
       description:
         "Plano direcionado para sintomas de TPM, perimenopausa e menopausa com abordagem clínica individualizada.",
       price: 860,
-      imageUrl: defaultImage,
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThAM_jtDVXlRoG1hp9Ol_T-t7dRk14gWD4uQ&s',
     },
     {
       company_id: clinicaVolkart._id,
@@ -229,7 +229,7 @@ async function main(): Promise<void> {
       description:
         "Combinação de micronutrientes, ajustes de estilo de vida e monitoramento laboratorial para fortalecer defesa imunológica.",
       price: 620,
-      imageUrl: defaultImage,
+      imageUrl: 'https://cdn.prod.website-files.com/624adfce4249ed51840ef8d1/62c48a76c7568a1ebfb32033_IMUNIDADE-3gJr00fjl9.jpeg',
     },
     {
       company_id: clinicaVolkart._id,
@@ -238,7 +238,7 @@ async function main(): Promise<void> {
       description:
         "Intervenções nutricionais e metabólicas para foco, memória e clareza mental em profissionais de alta exigência.",
       price: 790,
-      imageUrl: defaultImage,
+      imageUrl: 'https://uploads.metroimg.com/wp-content/uploads/2025/05/09171849/concentracao-xadrez.jpg',
     },
     {
       company_id: clinicaVolkart._id,
@@ -247,7 +247,7 @@ async function main(): Promise<void> {
       description:
         "Acompanhamento para recuperar vitalidade, melhorar condicionamento e corrigir disfunções metabólicas pós-infecção.",
       price: 830,
-      imageUrl: defaultImage,
+      imageUrl: 'https://www.formularium.com.br/inform/wp-content/uploads/2021/10/O-atendimento-medico-e-essencial-para-tratar-a-Sindrome-Pos-COVID.jpg',
     },
     {
       company_id: clinicaVolkart._id,
@@ -256,7 +256,7 @@ async function main(): Promise<void> {
       description:
         "Plano clínico para reduzir dores, edema e inflamações persistentes com base em dados laboratoriais e ajuste contínuo.",
       price: 920,
-      imageUrl: defaultImage,
+      imageUrl: 'https://img1.wsimg.com/isteam/ip/d9ac8c79-9a5e-4057-8b75-62ea1825f0d7/intradermoterapia-0006.jpg/:/',
     },
     {
       company_id: clinicaVolkart._id,
@@ -265,7 +265,7 @@ async function main(): Promise<void> {
       description:
         "Avaliação e acompanhamento para otimizar função tireoidiana, regular metabolismo e melhorar qualidade de vida.",
       price: 870,
-      imageUrl: defaultImage,
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWfKtu7op28Mdbabnf9J1NbejY_8yKiAy51Q&s',
     },
     {
       company_id: clinicaVolkart._id,
@@ -274,7 +274,7 @@ async function main(): Promise<void> {
       description:
         "Monitoramento mensal de massa magra e gordura com metas progressivas para ganho de saúde e estética.",
       price: 560,
-      imageUrl: defaultImage,
+      imageUrl: 'https://www.drfredcartaxo.com.br/wp-content/uploads/2024/01/Composicao-corporal-o-que-revela-o-exame-de-adipometria-1.jpg',
     },
     {
       company_id: clinicaVolkart._id,
@@ -283,7 +283,7 @@ async function main(): Promise<void> {
       description:
         "Plano contínuo com prevenção, ajuste hormonal e cuidado metabólico para envelhecimento saudável com autonomia.",
       price: 1100,
-      imageUrl: defaultImage,
+      imageUrl: 'https://www.sesc-rs.com.br/wp-content/uploads/2024/07/atividades-matu-total.jpg',
     },
   ]);
 

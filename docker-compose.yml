@@ -10,13 +10,11 @@ services:
     build: ./backend
     ports:
       - "${BACKEND_PORT:-4000}:4000"
+    env_file:
+      - ./backend/.env
     environment:
       PORT: "4000"
       MONGODB_URI: mongodb://mongo:27017/saas_poc
-      JWT_SECRET: dev-jwt-secret-change-in-prod
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
-      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
-      PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:4000}
     volumes:
       - ./backend/uploads:/app/uploads
     depends_on:
