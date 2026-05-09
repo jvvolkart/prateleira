@@ -118,6 +118,7 @@ npm run dev
 - Colocaria **cache** (Redis) para sessões, rate-limits e respostas de endpoints acessados frequentemente.
 - Tiraria o chat da request direta da API e processaria em background (fila + worker), pra API principal continuar rápida.
 - Faria uploads em **CDN** (S3) em vez de filesystem local.
+- Adicionaria input de pesquisa de produtos e paginação na listagem dos produtos
 
 ### Segurança
 
