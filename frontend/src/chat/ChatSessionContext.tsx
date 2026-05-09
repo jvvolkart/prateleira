@@ -1,8 +1,8 @@
+/* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -31,15 +31,6 @@ export function ChatSessionProvider({ children }: { children: ReactNode }) {
   const [streaming, setStreaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const assistantBuffer = useRef("");
-
-  useEffect(() => {
-    if (token) return;
-    setMessages([]);
-    setInput("");
-    setError(null);
-    setStreaming(false);
-    assistantBuffer.current = "";
-  }, [token]);
 
   const appendAssistantChunk = useCallback((chunk: string) => {
     assistantBuffer.current += chunk;
@@ -82,14 +73,14 @@ export function ChatSessionProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo(
     () => ({
-      messages,
-      input,
+      messages: token ? messages : [],
+      input: token ? input : "",
       setInput,
-      streaming,
-      error,
+      streaming: token ? streaming : false,
+      error: token ? error : null,
       send,
     }),
-    [messages, input, streaming, error, send]
+    [messages, input, streaming, error, send, token]
   );
 
   return (

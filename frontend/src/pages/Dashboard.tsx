@@ -23,7 +23,7 @@ export function Dashboard() {
   const { token, user, busy: authBusy } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => Boolean(token));
   const [formName, setFormName] = useState("");
   const [formCategory, setFormCategory] = useState("");
   const [formDescription, setFormDescription] = useState("");
@@ -58,7 +58,6 @@ export function Dashboard() {
   useEffect(() => {
     if (!token) return;
     let cancelled = false;
-    setLoading(true);
     fetchProducts(token)
       .then((list) => {
         if (!cancelled) setProducts(list);

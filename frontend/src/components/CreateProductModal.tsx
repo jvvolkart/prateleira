@@ -47,12 +47,16 @@ export function ProductFormModal({
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const onCloseRef = useRef(onClose);
   const busyRef = useRef(busy);
-  onCloseRef.current = onClose;
-  busyRef.current = busy;
 
   useEffect(() => {
-    if (!open) setLightboxSrc(null);
-  }, [open]);
+    onCloseRef.current = onClose;
+    busyRef.current = busy;
+  }, [onClose, busy]);
+
+  const closeModal = (): void => {
+    setLightboxSrc(null);
+    onClose();
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -93,7 +97,7 @@ export function ProductFormModal({
         disabled={busy}
         className="absolute inset-0 bg-zinc-900/40 backdrop-blur-[1px] dark:bg-black/70"
         onClick={() => {
-          if (!busy) onClose();
+          if (!busy) closeModal();
         }}
       />
       <div
@@ -113,7 +117,7 @@ export function ProductFormModal({
             ref={closeRef}
             type="button"
             disabled={busy}
-            onClick={onClose}
+            onClick={closeModal}
             className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 disabled:opacity-50 dark:text-cream/60 dark:hover:bg-zinc-800 dark:hover:text-cream"
             aria-label="Fechar"
           >
@@ -213,7 +217,7 @@ export function ProductFormModal({
             <button
               type="button"
               disabled={busy}
-              onClick={onClose}
+              onClick={closeModal}
               className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-cream dark:hover:bg-zinc-900"
             >
               Cancelar

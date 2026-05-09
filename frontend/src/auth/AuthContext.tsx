@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
   useCallback,
@@ -36,16 +37,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.getItem(TOKEN_KEY)
   );
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [busy, setBusy] = useState(true);
+  const [busy, setBusy] = useState(() => Boolean(localStorage.getItem(TOKEN_KEY)));
 
   useEffect(() => {
-    if (!token) {
-      setUser(null);
-      setBusy(false);
-      return;
-    }
+    if (!token) return;
     let cancelled = false;
-    setBusy(true);
     fetchMe(token)
       .then(({ user: u }) => {
         if (!cancelled) setUser(u);
