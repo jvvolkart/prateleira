@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --color-clinic-400: #e8cf6a;
+  --color-clinic-500: #c9a227;
+  --color-clinic-600: #9a7b1c;
+  --color-cream: #eeecea;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+
+  /* Scrollbars: thin track, theme-aware thumb (Firefox + WebKit) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #a1a1aa transparent;
+  }
+
+  html.dark * {
+    scrollbar-color: #71717a transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #a1a1aa;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #71717a;
+  }
+
+  html.dark *::-webkit-scrollbar-thumb {
+    background-color: #71717a;
+  }
+
+  html.dark *::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1aa;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: #fafafa;
+  color: #18181b;
+}
+
+html.dark body {
+  background-color: #050505;
+  color: #eeecea;
+}
