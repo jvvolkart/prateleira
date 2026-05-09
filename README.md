@@ -43,7 +43,7 @@ npm install
 npm run dev
 ```
 
-Para popular dados de exemplo após subir o backend:
+Para popular dados de exemplo após subir o backend:  
 (`seed` printa usuários e senhas no console)
 
 ```bash
@@ -74,7 +74,7 @@ npm install
 npm run dev
 ```
 
-Depois, para popular dados de exemplo:
+Depois, para popular dados de exemplo:  
 (`seed` printa usuários e senhas no console)
 
 ```bash
