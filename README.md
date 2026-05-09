@@ -100,6 +100,7 @@ npm run dev
 - **Monorepo simples (`frontend/` + `backend/`)**: reduz fricção de onboarding e facilita evoluir API e UI em conjunto sem a dificuldade de navegar em múltiplos repositórios.
 - **Separação por camada no backend**: `routes/`, `middleware/`, `models/`, `chat/`, `lib/` deixa responsabilidades previsíveis e diminui acoplamento entre transporte HTTP e regra.
 - **SPA React + Router**: fluxo de autenticação e áreas protegidas ficam declarativos, com roteamento centralizado em `App.tsx`.
+- **Modelo utilizado**: Para LLM foi escolhido o gpt-4o-mini por sua relação custo benefício pois apesar de ser inferior ao gpt-4o com um polimento do prompt se torna possível utilizar um modelo mais barato e rápido se o prompt for bem feito.
 
 ### Patterns adotados
 
