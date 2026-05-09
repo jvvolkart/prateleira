@@ -21,7 +21,11 @@ export function Register() {
     setError(null);
     setLoading(true);
     try {
-      await register({ email, password, company_name: companyName.trim() });
+      await register({
+        email,
+        password,
+        company_name: companyName.trim(),
+      });
       navigate("/app", { replace: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Não foi possível criar a conta.");
@@ -41,8 +45,8 @@ export function Register() {
           Criar conta
         </h1>
         <p className="mt-2 text-left text-sm text-zinc-600 dark:text-cream/75">
-          Uma nova unidade será criada com o nome abaixo. O primeiro cadastro desta
-          unidade é{" "}
+          Uma nova empresa será criada com o nome abaixo. O primeiro cadastro desta
+          empresa é{" "}
           <strong className="font-semibold text-zinc-900 dark:text-cream">
             administrador
           </strong>
@@ -51,7 +55,7 @@ export function Register() {
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4" aria-busy={loading}>
           <label className="block text-sm font-medium text-zinc-700 dark:text-cream/75">
-            Nome da unidade
+            Nome da empresa
             <input
               type="text"
               required
