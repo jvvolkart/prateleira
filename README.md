@@ -44,12 +44,14 @@ npm run dev
 ```
 
 Para popular dados de exemplo após subir o backend:
+(`seed` printa usuários e senhas no console)
 
 ```bash
 # em outro terminal
 cd backend
 npm run seed
 ```
+
 
 - Frontend: `http://localhost:5173`
 - Backend healthcheck: `http://localhost:4000/health`
@@ -73,13 +75,13 @@ npm run dev
 ```
 
 Depois, para popular dados de exemplo:
+(`seed` printa usuários e senhas no console)
 
 ```bash
 # em outro terminal
 cd backend
 npm run seed
 ```
-Após rodar o comando seed, no console é printado usuários e senha para fazer o login
 
 E frontend local (outro terminal):
 ```bash
