@@ -35,6 +35,8 @@ VITE_API_URL=http://localhost:4000
 
 ```bash
 # Backend + MongoDB
+cd backend
+npm install
 docker compose up --build
 
 # Frontend (em outro terminal)
